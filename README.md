@@ -1,10 +1,10 @@
-# [Video4U](https://www.yuanhuang.club/news)
+# [Video4U]
 
 ### How it works
 
  In this section, I’ll explain how I build the recommendation engine from the ground up.
 
-* Step 1: [Finding users with similar interests](#finding-readers-with-similar-interests)
+* Step 1: [Finding users with similar interests](#finding-s-with-similar-interests)
 
 * Step 2: [Topic modeling](#topic-modeling)
 
@@ -16,7 +16,7 @@
 
 Okay, that was cool. But how do I know whether the recommendation engine is working well or just spitting out random selections? How much will the users like the recommendations that they get? In fact, the evaluation of a recommending system can be quite tricky. The golden metric for a recommending system is how much the system will add value to the user and business. Ultimately, you want to perform A/B testing to see whether recommendations will increase usage, subscriptions, clicks, etc.
 
-However, in practice there are other common metrics to evaluate a recommender, which can still help us gain some insights of the performance before actually putting the system into use. Most of these offline methods need us to hold out a subset of the items from the training data set (in our case, holding out a subset of previously retweeted news posts), pretending the users haven’t seen these items and trying to recommend them back to the users. Since the reader groups’ history about this test set already exists, we can leverage on this information to validate the performance of recommender.
+However, in practice there are other common metrics to evaluate a recommender, which can still help us gain some insights of the performance before actually putting the system into use. Most of these offline methods need us to hold out a subset of the items from the training data set (in our case, holding out a subset of previously retweeted news posts), pretending the users haven’t seen these items and trying to recommend them back to the users. Since the user groups’ history about this test set already exists, we can leverage on this information to validate the performance of recommender.
 
 One natural goal of recommender systems is to distinguish good recommendations from bad ones. In the binary case, this is very natural — a “1” is a good recommendation, while “0” means a bad recommendation. However, since the data that we have (number of retweets of an article by users from a user group) is non-binary, a threshold must be chosen such that all ratings above the threshold are good and called “1”, while the rest are bad with label “0”. A natural way to set the threshold is to choose the median value of the number of retweets in a user group, leaving all the articles above median “good” recommendations and all the rest “bad”. The predicted score from the recommending system is the cosine similarity between the topics of an article and the topics in a user group, which ranges from 0 to 1.
 
