@@ -2,8 +2,6 @@
 
 ### How it works
 
-![alt text](./img/concept.png)
-
  In this section, I’ll explain how I build the recommendation engine from the ground up.
 
 * Step 1: [Finding users with similar interests](#finding-readers-with-similar-interests)
